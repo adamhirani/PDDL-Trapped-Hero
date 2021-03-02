@@ -179,7 +179,8 @@
                       )
         :effect (and
                      (not(has-trap ?loc))  
-                     (at-hero ?loc)     
+                     (at-hero ?loc)    
+                     (trap-disarmed ?loc) 
                 )
     )
     

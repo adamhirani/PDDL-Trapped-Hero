@@ -80,6 +80,8 @@
             (connected ?from ?to)
             (not(has-monster ?to))
             (not(is-destroyed ?to))
+            (not(trap-disarmed ?to))
+            (not(trap-disarmed ?from))
             (arm-free)
 
                             

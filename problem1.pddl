@@ -3,8 +3,6 @@
   (:objects
             cell1 cell2 cell3 cell4 cell5 cell6 cell7 cell8 - cells
             sword1 - swords
-            trap1 - traps
-            monster1 monster2 - monsters
   )
   (:init
   

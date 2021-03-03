@@ -60,7 +60,8 @@
         )
         :effect (and 
                      (at-hero ?to)
-                     (is-destroyed ?from)       
+                     (is-destroyed ?from)  
+                     (not(at-hero ?from))     
                 )
     )
     
@@ -77,18 +78,17 @@
         :precondition (and 
             (at-hero ?from)
             (has-trap ?to)
+            (not(has-trap ?from))
             (connected ?from ?to)
-            (not(has-monster ?to))
-            (not(is-destroyed ?to))
-            (not(trap-disarmed ?to))
-            (not(trap-disarmed ?from))
             (arm-free)
 
                             
         )
         :effect (and 
                      (at-hero ?to)
-                     (is-destroyed ?from)       
+                     (is-destroyed ?from) 
+                     (trap-disarmed ?to)
+                     (not(at-hero ?from))   
                 )
     )
 
@@ -106,14 +106,15 @@
             (at-hero ?from)
             (has-monster ?to)
             (connected ?from ?to)
-            (not(has-trap ?to))
             (not(is-destroyed ?to))
             (not(arm-free))
+            (holding ?s)
                             
         )
         :effect (and 
                     (at-hero ?to)
-                    (is-destroyed ?from)        
+                    (is-destroyed ?from) 
+                    (not(at-hero ?from))       
                 )
     )
     
@@ -129,13 +130,13 @@
             (at-hero ?loc)
             (at-sword ?s ?loc)
             (arm-free)
-            (not(holding ?s))
+            
                             
                       )
         :effect (and
-                  (at-hero ?loc)
                   (not(arm-free))
-                  (holding ?s)        
+                  (holding ?s) 
+                  (not(at-sword ?s ?loc))       
                 )
     )
     
@@ -151,16 +152,14 @@
                           (at-hero ?loc)
                           (not(has-monster ?loc))
                           (not(has-trap ?loc))
-                          (not(arm-free))
-                          (not(is-destroyed ?loc))
-                          (not(is-destroyed ?s))
+                          (holding ?s)
 
          
                       )
         :effect (and
                           (arm-free) 
-                          (at-hero ?loc) 
                           (not(holding ?s))
+                          (is-destroyed ?s)
                 )
     )
     
@@ -175,11 +174,10 @@
         :precondition (and 
                            (at-hero ?loc)
                            (has-trap ?loc)
-                           (not(trap-disarmed ?loc)) 
+                           (arm-free) 
                       )
         :effect (and
-                     (not(has-trap ?loc))  
-                     (at-hero ?loc)    
+                     (not(has-trap ?loc))   
                      (trap-disarmed ?loc) 
                 )
     )

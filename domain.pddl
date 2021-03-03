@@ -69,10 +69,9 @@
     ;   - hero is at a current location
     ;   - has a trap
     ;   - cells are connected
-    ;   - there is no monsters
-    ;   - destination is not destroyed
-    ;   - hero is not holding anything
-    ;effects: move hero, destroy original cell
+    ;   - not coming from a trap
+    ;   - arm is free
+    ;effects: move hero, destroy original cell, disarm trap
     (:action move-to-trap
         :parameters (?from ?to - cells)
         :precondition (and 
@@ -122,7 +121,7 @@
     ;   - hero is at a current location
     ;   - location has a sword
     ;   - arm is free
-    ;   - not holding sword
+    ;   
     ;effect, arm is not free, holding
     (:action pick-sword
         :parameters (?loc - cells ?s - swords)
